@@ -1,15 +1,16 @@
 /* Importação da Fonte do Google */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
 
-/* Variáveis de Cor (baseadas no seu código Swift) */
+/* Variáveis de Cor para Design Minimalista */
 :root {
-    --cor-primaria: #4ca640; /* rgb(76, 166, 64) - corFolhaClara */
-    --cor-destaque: #f2b24c; /* rgb(242, 178, 76) - corDestaque */
-    --cor-terra: #33260d;    /* rgb(51, 38, 13) - corTerra (aprox) */
-    --cor-texto: #555;
-    --fundo-claro: #f8f9fa;
+    --cor-primaria: #4ca640; /* Verde Principal */
+    --cor-destaque: #f2b24c; /* Amarelo/Laranja para destaque */
+    --cor-texto-forte: #222; /* Texto principal (quase preto) */
+    --cor-texto-suave: #666; /* Texto de corpo */
+    --fundo-claro: #fcfcfc; /* Fundo muito leve, quase branco */
     --fundo-branco: #ffffff;
-    --sombra-card: 0 4px 15px rgba(0, 0, 0, 0.07);
+    --sombra-card: 0 4px 15px rgba(0, 0, 0, 0.05); /* Sombra mais sutil */
+    --fundo-identidade: #f0fff0; /* Um verde muito suave para a seção de identidade */
 }
 
 /* Reset Básico e Estilo Geral */
@@ -22,7 +23,7 @@
 
 body {
     font-family: 'Nunito', sans-serif;
-    color: var(--cor-texto);
+    color: var(--cor-texto-suave);
     line-height: 1.7;
     background-color: var(--fundo-branco);
 }
@@ -35,7 +36,7 @@ body {
 
 h1, h2, h3 {
     font-weight: 900;
-    color: var(--cor-terra);
+    color: var(--cor-texto-forte); /* Títulos em preto, mais minimalista */
     margin-bottom: 1rem;
     line-height: 1.2;
 }
@@ -46,10 +47,12 @@ h3 { font-size: 1.5rem; }
 
 section {
     padding: 6rem 0;
+    background-color: var(--fundo-branco); /* Padrão branco */
 }
 
+/* Mantendo um leve contraste no fundo das seções pares */
 section:nth-child(even) {
-    background-color: var(--fundo-claro);
+    background-color: var(--fundo-claro); 
 }
 
 img {
@@ -65,7 +68,7 @@ img {
     top: 0;
     width: 100%;
     z-index: 100;
-    transition: box-shadow 0.3s ease, background 0.3s ease;
+    transition: box-shadow 0.3s ease;
 }
 
 #navbar.scrolled {
@@ -84,9 +87,8 @@ img {
     text-decoration: none;
 }
 
-/* NOVO ESTILO PARA O LOGO */
 #navbar .logo-img {
-    height: 36px; /* Ajuste a altura conforme necessário */
+    height: 36px;
     width: auto;
     margin-right: 10px;
 }
@@ -110,7 +112,7 @@ img {
 
 #navbar nav a {
     text-decoration: none;
-    color: var(--cor-texto);
+    color: var(--cor-texto-suave);
     font-weight: 700;
     transition: color 0.3s ease;
 }
@@ -127,7 +129,7 @@ img {
     font-weight: 700;
     transition: all 0.3s ease;
     display: inline-block;
-    border: none;
+    border: 2px solid transparent;
     cursor: pointer;
 }
 
@@ -141,28 +143,30 @@ img {
 }
 
 .btn-secondary {
-    background: var(--fundo-claro);
-    color: var(--cor-terra);
-    border: 2px solid #eee;
+    background: var(--fundo-branco);
+    color: var(--cor-texto-forte);
+    border: 2px solid var(--cor-texto-forte); /* Borda sólida preta */
 }
 .btn-secondary:hover {
-    background: #eee;
-    border-color: #ddd;
+    background: var(--cor-texto-forte);
+    color: white;
+    transform: translateY(-2px);
 }
 
 /* Botão de Download da App Store */
 .btn-appstore {
-    background-color: #000;
+    background-color: var(--cor-texto-forte);
     color: white;
     border-radius: 8px;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     padding: 10px 20px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 .btn-appstore:hover {
     transform: scale(1.05);
+    opacity: 0.9;
 }
 .btn-appstore .apple-icon {
     width: 24px;
@@ -234,6 +238,12 @@ img {
     border-radius: 12px;
     padding: 2.5rem;
     box-shadow: var(--sombra-card);
+    transition: transform 0.3s ease;
+    border: 1px solid #eee; /* Borda sutil para minimalismo */
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .card h3 {
@@ -274,42 +284,102 @@ img {
     text-align: center;
     box-shadow: var(--sombra-card);
     transition: transform 0.3s ease;
+    border: 1px solid #eee; /* Borda sutil para minimalismo */
 }
 .feature-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 .feature-card .icon {
     font-size: 2.5rem;
     display: block;
     margin-bottom: 1rem;
+    color: var(--cor-primaria); 
 }
 
-/* 5. Seção da Missão */
-#missao {
-    background: var(--cor-terra);
-    color: white;
+/* 5. SEÇÃO IDENTIDADE (Propósito, Missão, Visão, Valores) */
+#identidade {
+    background-color: var(--fundo-identidade); /* Verde muito suave como fundo */
+}
+
+#identidade h2 {
+    color: var(--cor-primaria);
+    margin-bottom: 3rem;
+}
+
+.identidade-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.identidade-item {
+    background: var(--fundo-branco);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: left;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-top: 5px solid var(--cor-primaria); /* Destaque superior em verde */
+    transition: transform 0.3s ease;
+}
+.identidade-item:hover {
+    transform: translateY(-5px);
+}
+
+.identidade-item h3 {
+    color: var(--cor-texto-forte);
+    margin-top: 10px;
+}
+
+.identidade-item .icon-identidade {
+    font-size: 2.5rem;
+    display: block;
+    line-height: 1;
+    color: var(--cor-destaque); /* Ícones em amarelo para quebrar o verde/branco */
+}
+
+/* Estilo específico para Valores */
+.valores-container {
     text-align: center;
-}
-#missao h2, #missao p {
-    color: white;
-}
-#missao p {
-    font-size: 1.5rem;
-    font-weight: 400;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
+    padding: 30px;
+    background: var(--fundo-branco);
+    border-radius: 12px;
+    box-shadow: var(--sombra-card);
+    border: 1px solid #eee;
+    transition: transform 0.3s ease;
 }
-#missao .valores {
-    margin-top: 2rem;
+.valores-container:hover {
+    transform: translateY(-5px);
+}
+
+.valores-container h3 {
+    color: var(--cor-primaria);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.valores-list {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 10px;
 }
-#missao .valores span {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 8px 15px;
-    border-radius: 20px;
+
+.valores-list span {
+    background: var(--cor-texto-forte); /* Valores em preto para contraste minimalista */
+    color: white;
+    padding: 10px 18px;
+    border-radius: 25px;
     font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+}
+.valores-list span:hover {
+    background: var(--cor-primaria);
 }
 
 /* 6. Seção de Planos */
@@ -330,20 +400,47 @@ img {
     flex-direction: column;
     position: relative;
     border: 3px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eee; /* Borda sutil para minimalismo */
+}
+.plano-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .plano-card.recomendado {
     border-color: var(--cor-primaria);
     transform: scale(1.05);
+    background-color: var(--cor-primaria);
+    color: white;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
 }
+.plano-card.recomendado:hover {
+    transform: scale(1.07);
+}
+
+.plano-card.recomendado h3,
+.plano-card.recomendado .preco,
+.plano-card.recomendado p,
+.plano-card.recomendado .preco small {
+    color: white;
+}
+.plano-card.recomendado ul li {
+    color: white;
+}
+.plano-card.recomendado ul li::before {
+    content: '⭐';
+    color: var(--cor-destaque);
+}
+
 
 .plano-card .tag-recomendado {
     position: absolute;
     top: -15px;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--cor-primaria);
-    color: white;
+    background: var(--cor-destaque);
+    color: var(--cor-texto-forte);
     font-size: 0.8rem;
     font-weight: 700;
     padding: 5px 15px;
@@ -354,21 +451,27 @@ img {
 .plano-card h3 {
     color: var(--cor-primaria);
 }
+.plano-card.recomendado h3 {
+    color: white;
+}
 .plano-card .preco {
     font-size: 2rem;
     font-weight: 900;
-    color: var(--cor-terra);
+    color: var(--cor-texto-forte);
     margin-bottom: 1rem;
+}
+.plano-card.recomendado .preco {
+    color: white;
 }
 .plano-card .preco small {
     font-size: 1rem;
     font-weight: 400;
-    color: var(--cor-texto);
+    color: var(--cor-texto-suave);
 }
 .plano-card ul {
     list-style: none;
     margin: 1.5rem 0;
-    flex-grow: 1; /* Empurra o botão para baixo */
+    flex-grow: 1;
 }
 .plano-card ul li {
     margin-bottom: 0.75rem;
@@ -402,30 +505,47 @@ img {
     margin: 0 auto 2rem;
 }
 
-/* 8. Rodapé */
+/* 8. Rodapé (Minimalista e Branco) - CORRIGIDO */
 footer {
-    background: #f1f1f1;
+    background: var(--fundo-branco);
     text-align: center;
     padding: 2rem 0;
     font-size: 0.9rem;
-    color: #888;
+    color: var(--cor-texto-suave);
+    border-top: 1px solid #eee;
 }
 
-/* ESTILO DO BOTÃO/LINK DE APRESENTAÇÃO (MODAL) */
-.footer-link {
-    background: none;
-    border: none;
-    color: #888;
-    cursor: pointer;
-    text-decoration: underline;
-    font-size: 0.9rem;
-    margin-top: 10px;
-    display: inline-block;
-    font-family: 'Nunito', sans-serif;
-    padding: 0;
+footer .container {
+    display: flex; /* Mantém o Flexbox */
+    flex-direction: column; /* Organiza itens verticalmente */
+    align-items: center; /* Centraliza itens horizontalmente */
+    text-align: center; 
+    gap: 10px; /* Espaçamento entre os itens */
 }
+
+/* Estilo para o Botão/Link "Sobre as Apresentações" */
+.footer-link {
+    /* É um botão/link, mas o Flexbox já o está centralizando */
+    width: fit-content;
+    padding: 8px 15px;
+    
+    background: var(--fundo-branco);
+    border: 1px solid var(--cor-texto-suave); /* Borda sutil */
+    border-radius: 6px;
+    
+    color: var(--cor-texto-suave);
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
 .footer-link:hover {
-    color: var(--cor-primaria);
+    background: var(--cor-primaria);
+    color: white;
+    border-color: var(--cor-primaria);
 }
 
 
@@ -438,12 +558,9 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.8); /* Fundo escuro para destacar o modal */
     z-index: 200;
-    
-    /* CORREÇÃO CHAVE: Esconde por padrão */
     display: none; 
-    
     align-items: center;
     justify-content: center;
     opacity: 0;
@@ -451,11 +568,10 @@ footer {
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* Classe 'show' que será adicionada via JS */
 .modal-overlay.show {
     opacity: 1;
     visibility: visible;
-    display: flex; /* Mostra o modal */
+    display: flex;
 }
 
 .modal-content {
@@ -478,7 +594,7 @@ footer {
 .modal-content h2 {
     text-align: left;
     margin-bottom: 1rem;
-    color: var(--cor-terra);
+    color: var(--cor-texto-forte);
 }
 
 .modal-close {
@@ -493,7 +609,7 @@ footer {
     line-height: 1;
 }
 .modal-close:hover {
-    color: var(--cor-terra);
+    color: var(--cor-texto-forte);
 }
 
 /* Estilo da grade da equipe dentro do modal */
@@ -517,7 +633,7 @@ footer {
 }
 .membro p {
     font-size: 0.9rem;
-    color: var(--cor-texto);
+    color: var(--cor-texto-suave);
 }
 
 
@@ -560,13 +676,13 @@ footer {
         max-height: 400px;
     }
 
-    /* 4. Seção "Para Quem?": Colunas Únicas */
+    /* 4. Seção "Para Quem?" - Colunas Únicas */
     #publico .publico-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
 
-    /* 5. Seção de Recursos: Otimização da Grade */
+    /* 5. Seção de Recursos - Otimização da Grade */
     #recursos .recursos-grid {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 1.5rem;
@@ -575,16 +691,21 @@ footer {
         padding: 1.5rem;
     }
 
-    /* 6. Seção Missão: Ajuste de Fonte */
-    #missao p {
-        font-size: 1.2rem;
+    /* 5. SEÇÃO IDENTIDADE - Ajustes para Mobile */
+    .identidade-grid {
+        grid-template-columns: 1fr;
     }
-    #missao .valores {
+    
+    .valores-list {
         flex-direction: column; 
-        gap: 0.75rem;
+        align-items: center;
+    }
+    .valores-list span {
+        width: 100%;
+        text-align: center;
     }
 
-    /* 7. Seção Planos: Coluna Única e Remoção do Zoom */
+    /* 6. Seção Planos - Coluna Única e Remoção do Zoom */
     #planos .planos-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -593,13 +714,9 @@ footer {
         transform: scale(1); 
     }
     
-    /* 8. Modal: Ocupa a tela inteira */
-    .modal-content {
-        max-width: 95%; 
-        max-height: 95vh;
-        padding: 1.5rem;
-    }
-    .equipe-container {
-        grid-template-columns: 1fr; 
+    /* 8. Rodapé: O Flexbox Column já cuida da centralização, apenas ajustamos o botão */
+    .footer-link {
+        width: 80%; /* Ocupa mais espaço em dispositivos móveis */
+        max-width: 300px;
     }
 }

@@ -1,77 +1,55 @@
-// Espera o conteúdo da página carregar
 document.addEventListener('DOMContentLoaded', () => {
+    const openModalBtn = document.getElementById('open-modal-btn');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const modalOverlay = document.getElementById('apresentacao-modal');
 
-    // Efeito de "Scroll" no Menu (Navbar)
-    const navbar = document.getElementById('navbar');
+    // Função para abrir o modal
+    const open_modal = () => {
+        if (modalOverlay) {
+            modalOverlay.classList.add('show');
+            modalOverlay.setAttribute('aria-hidden', 'false');
+        }
+    };
 
-    if (navbar) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                // Adiciona a classe 'scrolled' quando o usuário rola a página
-                navbar.classList.add('scrolled');
-            } else {
-                // Remove a classe 'scrolled' quando o usuário está no topo
-                navbar.classList.remove('scrolled');
+    // Função para fechar o modal
+    const close_modal = () => {
+        if (modalOverlay) {
+            modalOverlay.classList.remove('show');
+            modalOverlay.setAttribute('aria-hidden', 'true');
+        }
+    };
+
+    if (openModalBtn) {
+        openModalBtn.addEventListener('click', open_modal);
+    }
+
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', close_modal);
+    }
+
+    // Fechar modal ao clicar fora dele
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                close_modal();
             }
         });
     }
 
-    // Rolagem Suave para links internos (âncoras)
-    const linksInternos = document.querySelectorAll('a[href^="#"]');
-
-    linksInternos.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault(); // Impede o salto padrão
-
-            const targetId = this.getAttribute('href');
-            
-            // Tratamento especial para o link do logo
-            if (targetId === '#') {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-                return;
-            }
-
-            const targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
+    // Fechar modal com a tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalOverlay.classList.contains('show')) {
+            close_modal();
+        }
     });
-
-
-    // ===============================================
-    // --- NOVA LÓGICA: Controle do Modal de Apresentações ---
-    // ===============================================
-    const openBtn = document.getElementById('open-modal-btn');
-    const closeBtn = document.getElementById('close-modal-btn');
-    const modal = document.getElementById('apresentacao-modal');
-
-    if (openBtn && closeBtn && modal) {
-        
-        // Abrir o modal
-        openBtn.addEventListener('click', () => {
-            modal.classList.add('show');
-        });
-
-        // Fechar o modal (pelo botão 'x')
-        closeBtn.addEventListener('click', () => {
-            modal.classList.remove('show');
-        });
-
-        // Fechar clicando fora (no overlay cinza)
-        modal.addEventListener('click', (e) => {
-            // Verifica se o clique foi exatamente no overlay (fundo)
-            if (e.target === modal) { 
-                modal.classList.remove('show');
-            }
-        });
-    }
-
+    
+    // Efeito de sombra na Navbar ao rolar
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
 });
