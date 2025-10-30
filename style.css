@@ -163,6 +163,7 @@ img {
     align-items: center;
     padding: 10px 20px;
     transition: transform 0.3s ease, opacity 0.3s ease;
+    margin: 5px; /* Adicionado para espaçamento */
 }
 .btn-appstore:hover {
     transform: scale(1.05);
@@ -185,6 +186,43 @@ img {
     opacity: 0.8;
 }
 .btn-appstore strong {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* Botão de Download da Google Play (Novo) */
+.btn-playstore {
+    background-color: var(--cor-texto-forte);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    margin: 5px; /* Adicionado para espaçamento */
+}
+.btn-playstore:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+.btn-playstore .google-play-icon {
+    width: 24px;
+    height: 24px;
+    fill: white;
+    margin-right: 12px;
+}
+.btn-playstore div {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    line-height: 1.1;
+}
+.btn-playstore span {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+.btn-playstore strong {
     font-size: 1.2rem;
     font-weight: 700;
 }
@@ -504,6 +542,8 @@ img {
     max-width: 600px;
     margin: 0 auto 2rem;
 }
+/* No desktop, o text-align: center já faz os botões inline-flex ficarem lado a lado */
+
 
 /* 8. Rodapé (Minimalista e Branco) - CORRIGIDO */
 footer {
@@ -675,6 +715,11 @@ footer .container {
     #hero .hero-image img {
         max-height: 400px;
     }
+    
+    /* No mobile, o text-align: center do .hero-text 
+       e o margin: 5px dos botões farão com que eles 
+       quebrem a linha e se alinhem adequadamente. */
+
 
     /* 4. Seção "Para Quem?" - Colunas Únicas */
     #publico .publico-grid {
